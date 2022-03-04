@@ -84,19 +84,19 @@ WSGI_APPLICATION = 'single_page_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'single_page_website',
-#         'USER': user,
-#         'PASSWORD': password,
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
-
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-DATABASES['default'] = dj_database_url.config(default=f"postgres://{user}:{password}@{'127.0.0.1'}:{'5432'}/{'single_page_website'}")
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'single_page_website',
+        'USER': user,
+        'PASSWORD': password,
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+#
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'] = dj_database_url.config(default=f"postgres://{user}:{password}@{'127.0.0.1'}:{'5432'}/{'single_page_website'}")
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
