@@ -94,6 +94,7 @@ WSGI_APPLICATION = 'single_page_website.wsgi.application'
 #     }
 # }
 
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 DATABASES['default'] = dj_database_url.config(default=f"postgres://{user}:{password}@{'127.0.0.1'}:{'5432'}/{'single_page_website'}")
 
 # Password validation
