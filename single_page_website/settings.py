@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
+
+from django.conf.global_settings import DATABASES
+
 from dotenv_file import secret_key, user, password
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -79,17 +83,18 @@ WSGI_APPLICATION = 'single_page_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'single_page_website',
-        'USER': user,
-        'PASSWORD': password,
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'single_page_website',
+#         'USER': user,
+#         'PASSWORD': password,
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
+DATABASES['default'] = dj_database_url.config(default=f"postgres://{user}:{password}@{'127.0.0.1'}:{'5432'}/{'single_page_website'}")
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
