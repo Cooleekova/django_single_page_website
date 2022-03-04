@@ -9,10 +9,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import django_heroku
 import os
 # import dj_database_url
-import django_heroku
 from pathlib import Path
 
 from django.conf.global_settings import DATABASES
