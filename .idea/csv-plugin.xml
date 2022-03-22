@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\records\admin.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\records\filters.py">
           <value>
             <Attribute>

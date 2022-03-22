@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <title>Data Table</title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -19,9 +18,28 @@
     </div>
     <form method="GET" action=".">
       <div class="form-row" align="center">
-            <div class="form-group col-12">
+            <div class="form-group col-3">
+                <label for="inputState" class="form-label" >Filter data by </label>
+                <select id="inputState" class="form-select" name="select_field">
+                    <option selected> Choose the field...</option>
+                    <option value="title">title</option>
+                    <option value="quantity">quantity</option>
+                    <option value="distance">distance</option>
+                </select>
+            </div>
+            <div class="form-group col-3">
+                <label for="inputState" class="form-label" >Select filter  </label>
+                <select id="inputState" class="form-select" name="select_filter">
+                    <option selected>Choose the option...</option>
+                    <option value="contains">contains</option>
+                    <option value="more than">more than</option>
+                    <option value="less than">less than</option>
+                    <option value="equals to">equals to</option>
+                </select>
+            </div>
+            <div class="form-group col-3">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="title_contains" placeholder="Title contains..." />
+                    <input class="form-control py-2 border-right-0 border" type="search" name="search_field" placeholder="Type your query here..." />
                     <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
                             <i class="fa fa-search"></i>
@@ -29,12 +47,13 @@
                     </span>
                 </div>
             </div>
+          <div>
+            <button type="submit" class="btn btn-primary" style="margin-left: 85%;">Search</button>
+          </div>
         </div>
-
-
-    <button type="submit" class="btn btn-primary">Search</button>
     </form>
-    <div>
+
+        <div>
         <table border="1" cellpadding=10>
             <tr align="center">
                 <th><h3>Date</h3></th>
@@ -52,6 +71,7 @@
                 {% endfor %}
         </table>
     </div>
+
     </main>
 </body>
 </html>
