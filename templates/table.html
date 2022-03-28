@@ -12,48 +12,49 @@
 <body>
     <main role="main" class="container">
 
-    <div class="col-md-12 text-center">
+    <div class="col-md text-center">
         <h1 align="center">Data Table</h1>
         <hr class="mt-0 mb-4">
     </div>
-    <form method="GET" action=".">
-      <div class="form-row" align="center">
-            <div class="form-group col-3">
-                <label for="inputState" class="form-label" >Filter data by </label>
-                <select id="inputState" class="form-select" name="select_field">
-                    <option selected> Choose the field...</option>
-                    <option value="title">title</option>
-                    <option value="quantity">quantity</option>
-                    <option value="distance">distance</option>
-                </select>
-            </div>
-            <div class="form-group col-3">
-                <label for="inputState" class="form-label" >Select filter  </label>
-                <select id="inputState" class="form-select" name="select_filter">
-                    <option selected>Choose the option...</option>
-                    <option value="contains">contains</option>
-                    <option value="more than">more than</option>
-                    <option value="less than">less than</option>
-                    <option value="equals to">equals to</option>
-                </select>
-            </div>
-            <div class="form-group col-3">
-                <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="search_field" placeholder="Type your query here..." />
-                    <span class="input-group-append">
-                        <div class="input-group-text bg-transparent">
-                            <i class="fa fa-search"></i>
-                        </div>
-                    </span>
+    <div class="container" style="margin-top: 30px">
+        <form method="GET" action=".">
+          <div class="form-row" align="center">
+                <div class="col-sm form-control py-2">
+<!--                    <label for="inputState" class="form-label" >Filter by </label>-->
+                    <select id="inputState" class="form-select" name="select_field">
+                        <option selected>Filter by...</option>
+                        <option value="title">title</option>
+                        <option value="quantity">quantity</option>
+                        <option value="distance">distance</option>
+                    </select>
                 </div>
+                <div class="col-sm form-control py-2">
+<!--                    <label for="inputState" class="form-label" >Select filter  </label>-->
+                    <select id="inputState" class="form-select" name="select_filter">
+                        <option selected>Select filter...</option>
+                        <option value="contains">contains</option>
+                        <option value="more than">more than</option>
+                        <option value="less than">less than</option>
+                        <option value="equals to">equals to</option>
+                    </select>
+                </div>
+                <div class="col-sm">
+                    <div class="input-group">
+                        <input class="form-control py-2 border-right-0 border" type="search" name="search_field" placeholder="Type your query here..." />
+                        <span class="input-group-append">
+                            <div class="input-group-text bg-transparent">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+              <div>
+                <button type="submit" class="btn btn-primary" style="margin-left: 5%;">Search</button>
+              </div>
             </div>
-          <div>
-            <button type="submit" class="btn btn-primary" style="margin-left: 85%;">Search</button>
-          </div>
-        </div>
-    </form>
-
-        <div>
+        </form>
+    </div>
+        <div style="margin-top: 30px">
         <table border="1" cellpadding=10>
             <tr align="center">
                 <th><h3>Date</h3></th>

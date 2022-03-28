@@ -1,3 +1,5 @@
+from django.core.exceptions import ValidationError
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView
 from records.models import Record
@@ -27,36 +29,20 @@ def filter_view(request):
     chosen_option = request.GET.get('select_filter')
     search_query = request.GET.get('search_field')
 
-    if chosen_field == 'title':
-        if search_query != '' and search_query is not None:
-            if chosen_option == 'contains':
-                qs = qs.filter(title__icontains=search_query)
-            elif chosen_option == 'equals to':
-                qs = qs.filter(title__iexact=search_query)
+    if search_query != '' and search_query is not None:
+        if chosen_option != '' and chosen_option is not None:
+            if chosen_field == 'title':
+                qs = Record.objects.filter_title(search_query=search_query, chosen_option=chosen_option)
+            if chosen_field == 'quantity':
+                qs = Record.objects.filter_quantity(search_query=search_query, chosen_option=chosen_option)
+            if chosen_field == 'distance':
+                try:
+                    qs = Record.objects.filter_distance(search_query=search_query, chosen_option=chosen_option)
+                except ValidationError:
+                    return HttpResponse(f'<h1 style="color:red" align="center">ERROR: distance value must not contain symbols like ","</h1>')
+
         else:
             qs = None
-
-    if chosen_field == 'quantity':
-        if search_query != '' and search_query is not None:
-            if chosen_option == 'contains':
-                qs = qs.filter(quantity__icontains=search_query)
-            elif chosen_option == 'equals to':
-                qs = qs.filter(quantity__iexact=search_query)
-            elif chosen_option == 'more than':
-                qs = qs.filter(quantity__gte=search_query)
-            elif chosen_option == 'less than':
-                qs = qs.filter(quantity__lte=search_query)
-
-    if chosen_field == 'distance':
-        if search_query != '' and search_query is not None:
-            if chosen_option == 'contains':
-                qs = qs.filter(distance__icontains=search_query)
-            elif chosen_option == 'equals to':
-                qs = qs.filter(distance__iexact=search_query)
-            elif chosen_option == 'more than':
-                qs = qs.filter(distance__gte=search_query)
-            elif chosen_option == 'less than':
-                qs = qs.filter(distance__lte=search_query)
 
     context = {
         'queryset': qs,
