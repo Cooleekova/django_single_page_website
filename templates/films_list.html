@@ -1,0 +1,69 @@
+
+
+{% block content %}
+    <form method="get">
+
+    <div class="col-sm form-control py-2">
+        <select id="selectField" class="form-select" name="select_field">
+            <option selected>Filter by...</option>
+            {% for field in filter.form.fields %}
+                <option value="{{ field }} ">{{ field }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+
+
+        <input type="submit" />
+    </form>
+    <div style="margin-top: 30px;">
+        <table border="1" cellpadding=10 style="font-family:Verdana">
+            <tr align="center">
+                <th><h4>Year</h4></th>
+                <th><h4>Length</h4></th>
+                <th><h4>Title</h4></th>
+                <th><h4>Subject</h4></th>
+                <th><h4>Actor</h4></th>
+                <th><h4>Actress</h4></th>
+                <th><h4>Director</h4></th>
+                <th><h4>Popularity</h4></th>
+            </tr>
+                {% for film in filter.qs %}
+                    <tr>
+                        <td align="center">{{ film.year }}</td>
+                        <td align="center">{{ film.length }}</td>
+                        <td align="center">{{ film.title }}</td>
+                        <td align="center">{{ film.subject }}</td>
+                        <td align="center">{{ film.actor }}</td>
+                        <td align="center">{{ film.actress }}</td>
+                        <td align="center">{{ film.director }}</td>
+                        <td align="center">{{ film.popularity }}</td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </div>
+    <div class="pagination justify-content-center">
+        <span class="step-links" style="margin-top: 30px;">
+
+
+                 {% if page.has_previous %}
+                    <a href="?page=1">&laquo; First page </a>
+                    <a href="?page={{ page.previous_page_number }}">Previous page</a>
+                {% endif %}
+
+                <span class="current" >
+                    Page {{ page.number }} of {{ page.paginator.num_pages }}
+                </span>
+
+                {% if page.has_next %}
+                    <a href="?page={{ page.next_page_number }}"> Next Page</a>
+                    <a href="?page={{ page.paginator.num_pages }}"> Last Page &raquo;</a>
+                {% endif %}
+
+
+
+
+        </span>
+    </div>
+{% endblock %}
+
