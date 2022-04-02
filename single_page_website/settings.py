@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'single_page_website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'single_page_website',
+        'NAME': 'list_of_films',
         'USER': user,
         'PASSWORD': password,
         'HOST': '127.0.0.1',
