@@ -13,7 +13,7 @@
 <main role="main" class="container">
 
     <div class="col-md text-center">
-        <h1>List of films</h1>
+        <h1><b>List of films</b></h1>
 <!--        <hr class="mt-0 mb-4">-->
     </div>
     <div class="container" style="margin-top: 30px">
@@ -77,14 +77,14 @@
      <div style="margin-top: 30px;">
         <table border="1" cellpadding=10 style="font-family:Verdana">
             <tr align="center">
-                <th><h5>Year</h5></th>
-                <th><h5>Length <small>(minutes)</small></h5></th>
-                <th><h5>Title</h5></th>
-                <th><h5>Genre</h5></th>
-                <th><h5>Actor</h5></th>
-                <th><h5>Actress</h5></th>
-                <th><h5>Director</h5></th>
-                <th><h5>Popularity<small>(%)</small></h5></th>
+                <th><h5><b>Year</b></h5></th>
+                <th><h5><b>Length <small><b>(minutes)</b></small></b></h5></th>
+                <th><h5><b>Title</b></h5></th>
+                <th><h5><b>Genre</b></h5></th>
+                <th><h5><b>Actor</b></h5></th>
+                <th><h5><b>Actress</b></h5></th>
+                <th><h5><b>Director</b></h5></th>
+                <th><h5><b>Popularity<small><b>(%)</b></small></b></h5></th>
             </tr>
                 {% for film in queryset %}
                     <tr>
@@ -117,7 +117,7 @@
                     {% endif %}
 
                     <span class="current" >
-                        Page {{ page.number }} of {{ page.paginator.num_pages }}
+                        <b>Page {{ page.number }} of {{ page.paginator.num_pages }}</b>
                     </span>
 
                     {% if page.has_next %}
@@ -133,7 +133,7 @@
                 {% endif %}
 
                 <span class="current" >
-                    Page {{ page.number }} of {{ page.paginator.num_pages }}
+                    <b>Page {{ page.number }} of {{ page.paginator.num_pages }}</b>
                 </span>
 
                 {% if page.has_next %}
