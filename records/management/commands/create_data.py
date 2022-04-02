@@ -20,10 +20,22 @@ class Command(BaseCommand):
                 else:
                     length = int(values[1])
                 title = values[2]
-                subject = values[3]
-                actor = values[4]
-                actress = values[5]
-                director = values[6]
+                if values[3] == '':
+                    subject = "No info provided"
+                else:
+                    subject = values[3]
+                if values[4] == '':
+                    actor = "No info provided"
+                else:
+                    actor = values[4]
+                if values[5] == '':
+                    actress = "No info provided"
+                else:
+                    actress = values[5]
+                if values[6] == '':
+                    director = "No info provided"
+                else:
+                    director = values[6]
                 if values[7] == '':
                     popularity = 0
                 else:

@@ -26,7 +26,7 @@
                         <option value="year">year</option>
                         <option value="length">length</option>
                         <option value="title">title</option>
-                        <option value="subject">subject</option>
+                        <option value="subject">genre</option>
                         <option value="actor">actor</option>
                         <option value="actress">actress</option>
                         <option value="director">director</option>
@@ -59,7 +59,7 @@
                         <option value="year">year</option>
                         <option value="length">length</option>
                         <option value="title">title</option>
-                        <option value="subject">subject</option>
+                        <option value="subject">genre</option>
                         <option value="actor">actor</option>
                         <option value="actress">actress</option>
                         <option value="director">director</option>
@@ -77,20 +77,20 @@
      <div style="margin-top: 30px;">
         <table border="1" cellpadding=10 style="font-family:Verdana">
             <tr align="center">
-                <th><h4>Year</h4></th>
-                <th><h4>Length</h4></th>
-                <th><h4>Title</h4></th>
-                <th><h4>Genre</h4></th>
-                <th><h4>Actor</h4></th>
-                <th><h4>Actress</h4></th>
-                <th><h4>Director</h4></th>
-                <th><h4>Popularity</h4></th>
+                <th><h5>Year</h5></th>
+                <th><h5>Length <small>(minutes)</small></h5></th>
+                <th><h5>Title</h5></th>
+                <th><h5>Genre</h5></th>
+                <th><h5>Actor</h5></th>
+                <th><h5>Actress</h5></th>
+                <th><h5>Director</h5></th>
+                <th><h5>Popularity<small>(%)</small></h5></th>
             </tr>
                 {% for film in queryset %}
                     <tr>
                         <td align="center">{{ film.year }}</td>
                         <td align="center">{{ film.length }}</td>
-                        <td align="center"><a href="https://www.google.com/search?q={{ film.title }}, {{ film.director }}, {{ film.year }}">{{ film.title }}</a></td>
+                        <td align="center"><a href="https://www.google.com/search?q={{ film.title }}, film of {{ film.year }}">{{ film.title }}</a></td>
                         <td align="center">{{ film.subject }}</td>
                         <td align="center">{{ film.actor }}</td>
                         <td align="center">{{ film.actress }}</td>
@@ -104,7 +104,11 @@
 
     <div class="pagination justify-content-center">
         <span class="step-links" style="margin-top: 30px;">
-        {% if 'search_field' in request.get_full_path %}
+
+
+
+
+            {% if 'search_field' in request.get_full_path %}
 
 
                     {% if page.has_previous %}
@@ -120,6 +124,23 @@
                         <a href="?page={{ page.next_page_number }}&select_field={{ select_field }}&select_filter={{ select_filter }}&search_field={{ search_field }}&ordering={{ ordering }}"> Next Page</a>
                         <a href="?page={{ page.paginator.num_pages }}&select_field={{ select_field }}&select_filter={{ select_filter }}&search_field={{ search_field }}&ordering={{ ordering }}"> Last Page &raquo;</a>
                     {% endif %}
+
+        {% else %}
+
+        {% if page.has_previous %}
+                    <a href="?page=1">&laquo; First page </a>
+                    <a href="?page={{ page.previous_page_number }}">Previous page</a>
+                {% endif %}
+
+                <span class="current" >
+                    Page {{ page.number }} of {{ page.paginator.num_pages }}
+                </span>
+
+                {% if page.has_next %}
+                    <a href="?page={{ page.next_page_number }}"> Next Page</a>
+                    <a href="?page={{ page.paginator.num_pages }}"> Last Page &raquo;</a>
+                {% endif %}
+
 
         {% endif %}
 

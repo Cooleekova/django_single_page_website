@@ -1,1 +1,0 @@
-[{"model": "records.record", "pk": 1, "fields": {"date": "2022-03-02T20:57:42.600Z", "title": "Wilson Kipsang Kiprotich", "quantity": 1, "distance": "10.15"}}, {"model": "records.record", "pk": 2, "fields": {"date": "2005-01-02T00:00:00Z", "title": "Patrick Makau Musyoki;", "quantity": 20, "distance": "10.16"}}]
