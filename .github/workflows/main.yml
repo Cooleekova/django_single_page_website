@@ -22,8 +22,6 @@ jobs:
     services:
       postgres:
         image: postgres:13.6
-      env:
-        POSTGRES_DB: djtesting
       ports:
         -5432:5432
 
